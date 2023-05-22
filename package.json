@@ -1,11 +1,10 @@
 {
-  "name": "react-three-next",
-  "version": "2.0.0",
+  "name": "fragrance",
+  "version": "0.0.1",
   "authors": [
-    "Renaud ROHLINGER <https://twitter.com/onirenaud>"
+   "cooooolFree"
   ],
-  "license": "MIT",
-  "private": true,
+  "private": false,
   "engines": {
     "node": ">=14"
   },
