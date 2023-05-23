@@ -4,9 +4,11 @@ import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 
 const Statue = dynamic(() => import('@/components/canvas/Statue').then((mod) => mod.Statue), { ssr: false })
+const Floor = dynamic(() => import('@/components/canvas/Floor').then((mod) => mod.Floor), { ssr: false })
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
   ssr: false,
   loading: () => (
+    // loading indicator
     <div className='flex h-96 w-full flex-col items-center justify-center'>
       <svg className='-ml-1 mr-3 h-5 w-5 animate-spin text-black' fill='none' viewBox='0 0 24 24'>
         <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4' />
@@ -19,15 +21,16 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
     </div>
   ),
 })
-const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Common), { ssr: false })
+const Common = dynamic(() => import('@/components/canvas/CommonEnv').then((mod) => mod.Common), { ssr: false })
 
 export default function Page() {
   return (
     <>
-      <div className='mx-auto flex w-full h-full flex-col flex-wrap items-center md:flex-row  lg:w-4/5'>
-        <View orbit className='flex h-96 w-full flex-col items-center justify-center'>
+      <div className='flex w-full h-full flex-col flex-wrap items-center md:flex-row'>
+        <View orbit className='flex h-full w-full flex-col items-center justify-center'>
           <Suspense fallback={null}>
             <Statue />
+            <Floor />
             <Common />
           </Suspense>
         </View>
